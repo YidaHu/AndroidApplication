@@ -1,5 +1,6 @@
 package com.huyd.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,6 +16,8 @@ import com.huyd.alertdialogdemo.OrdinaryDialogActivity;
 import com.huyd.alertdialogdemo.R;
 import com.huyd.views.CustomDialog;
 
+import java.util.ArrayList;
+
 /**
  * Author: huyd
  * Date: 2017-08-02
@@ -22,6 +25,8 @@ import com.huyd.views.CustomDialog;
  * Describe:警示框工具类
  */
 public class AlertDialogUtil {
+
+	static int yourChoice;
 
 	/**
 	 * 普通警示框
@@ -127,6 +132,167 @@ public class AlertDialogUtil {
 			}
 		});
 		builder.create().show();
+	}
+
+	/**
+	 * 列表Dialog
+	 *
+	 * @param context
+	 */
+	public static void showListDialog(final Context context) {
+		final String[] items = {"艾欧尼亚", "弗雷尔卓德", "皮尔特沃夫", "比尔吉沃特"};
+		AlertDialog.Builder listDialog =
+				new AlertDialog.Builder(context);
+		listDialog.setTitle("符文之地，魔法就是一切");
+		listDialog.setItems(items, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				// which 下标从0开始
+				// ...To-do
+				Toast.makeText(context,
+						"你点击了" + items[which],
+						Toast.LENGTH_SHORT).show();
+			}
+		});
+		listDialog.show();
+	}
+
+
+	/**
+	 * 单选Dialog
+	 *
+	 * @param context
+	 */
+	public static void showSingleChoiceDialog(final Context context) {
+		final String[] items = {"复仇之矛", "迷失之牙", "虚空之眼", "弗雷尔卓德之心"};
+		yourChoice = -1;
+		AlertDialog.Builder singleChoiceDialog =
+				new AlertDialog.Builder(context);
+		singleChoiceDialog.setTitle("请选择一个英雄");
+		// 第二个参数是默认选项，此处设置为0
+		singleChoiceDialog.setSingleChoiceItems(items, 0,
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						yourChoice = which;
+					}
+				});
+		singleChoiceDialog.setPositiveButton("确定",
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						if (yourChoice != -1) {
+							Toast.makeText(context,
+									"你选择了" + items[yourChoice],
+									Toast.LENGTH_SHORT).show();
+						}
+					}
+				});
+		singleChoiceDialog.show();
+	}
+
+
+	static ArrayList<Integer> yourChoices = new ArrayList<>();
+
+	/**
+	 * 多选Dialog
+	 * @param context
+	 */
+	public static void showMultiChoiceDialog(final Context context) {
+		final String[] items = {"暴风之剑", "幻影之舞", "无尽之刃", "玛莫提乌斯之噬"};
+		// 设置默认选中的选项，全为false默认均未选中
+		final boolean initChoiceSets[] = {false, false, false, false};
+		yourChoices.clear();
+		AlertDialog.Builder multiChoiceDialog =
+				new AlertDialog.Builder(context);
+		multiChoiceDialog.setTitle("拾起你的武器,战斗吧");
+		multiChoiceDialog.setMultiChoiceItems(items, initChoiceSets,
+				new DialogInterface.OnMultiChoiceClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which,
+					                    boolean isChecked) {
+						if (isChecked) {
+							yourChoices.add(which);
+						} else {
+							yourChoices.remove(which);
+						}
+					}
+				});
+		multiChoiceDialog.setPositiveButton("确定",
+				new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						int size = yourChoices.size();
+						String str = "";
+						for (int i = 0; i < size; i++) {
+							str += items[yourChoices.get(i)] + " ";
+						}
+						Toast.makeText(context,
+								"你选中了" + str,
+								Toast.LENGTH_SHORT).show();
+					}
+				});
+		multiChoiceDialog.show();
+	}
+
+
+	/**
+	 * 加载Dialog
+	 *
+	 * @param context
+	 */
+	public static void showWaitingDialog(Context context) {
+	/* 等待Dialog具有屏蔽其他控件的交互能力
+	 * @setCancelable 为使屏幕不可点击，设置为不可取消(false)
+     * 下载等事件完成后，主动调用函数关闭该Dialog
+     */
+		ProgressDialog waitingDialog =
+				new ProgressDialog(context);
+		waitingDialog.setTitle("匹配战队");
+		waitingDialog.setMessage("匹配队友中...");
+		waitingDialog.setIndeterminate(true);
+//		waitingDialog.setCancelable(false);
+		waitingDialog.show();
+	}
+
+	/**
+	 * 进度条Dialog
+	 *
+	 * @param context
+	 */
+	public static void showProgressDialog(Context context) {
+	/* @setProgress 设置初始进度
+	 * @setProgressStyle 设置样式（水平进度条）
+     * @setMax 设置进度最大值
+     */
+		final int MAX_PROGRESS = 100;
+		final ProgressDialog progressDialog =
+				new ProgressDialog(context);
+		progressDialog.setProgress(0);
+		progressDialog.setTitle("敌军将在30秒后到达战场");
+		progressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+		progressDialog.setMax(MAX_PROGRESS);
+		progressDialog.show();
+	/* 模拟进度增加的过程
+	 * 新开一个线程，每个100ms，进度增加1
+     */
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				int progress = 0;
+				while (progress < MAX_PROGRESS) {
+					try {
+						Thread.sleep(100);
+						progress++;
+						progressDialog.setProgress(progress);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				// 进度达到最大值后，窗口消失
+				progressDialog.cancel();
+			}
+		}).start();
 	}
 
 

@@ -33,13 +33,19 @@ public class MainActivity extends AppCompatActivity implements LoginDialogFragme
 		listView = (ListView) findViewById(R.id.listView);
 		//我们设置一个List集合，然后向里边添加几条数据
 		List<String> ls = new ArrayList<String>();
-		ls.add("普通警示框");
-		ls.add("带输入框警示框(setView)");
-		ls.add("自定义警示框");
+		ls.add("普通Dialog");
+		ls.add("输入框Dialog");
+		ls.add("自定义Dialog");
+		ls.add("列表Dialog");
+		ls.add("单选Dialog");
+		ls.add("多选Dialog");
+		ls.add("加载框Dialog");
+		ls.add("进度条Dialog");
 		ls.add("重写Dialog");
 		ls.add("DialogFragment");
 		ls.add("重写onCreateDialog");
 		ls.add("奔跑吧少年");
+
 
 		//获取xml文件中listView控件
 		//然后为listView控件调用setAdapter方法，让数据显示在界面上。
@@ -67,32 +73,54 @@ public class MainActivity extends AppCompatActivity implements LoginDialogFragme
 			}
 			switch (i) {
 				case 0:
-					//普通警示框
+					//普通Dialog
 					AlertDialogUtil.showSystemAlertDialog(MainActivity.this);
 					break;
 				case 1:
-					//带输入框警示框
+					//带输入框Dialog
 					AlertDialogUtil.showInputAlertDialog(MainActivity.this);
 					break;
 				case 2:
-					//自定义警示框
+					//自定义Dialog
 					AlertDialogUtil.showCustomizeAlertDialog(MainActivity.this);
 					break;
 				case 3:
+					//列表Dialog
+					AlertDialogUtil.showListDialog(MainActivity.this);
+					break;
+				case 4:
+					//单选Dialog
+					AlertDialogUtil.showSingleChoiceDialog(MainActivity.this);
+					break;
+				case 5:
+					//多选Dialog
+					AlertDialogUtil.showMultiChoiceDialog(MainActivity.this);
+					break;
+				case 6:
+					//加载Dialog
+					AlertDialogUtil.showWaitingDialog(MainActivity.this);
+					break;
+				case 7:
+					//进度条Dialog
+					AlertDialogUtil.showProgressDialog(MainActivity.this);
+					break;
+
+
+				case 8:
 					//重写Dialog
 					AlertDialogUtil.showOverrideAlertDialog(MainActivity.this);
 					break;
-				case 4:
+				case 9:
 					//继承DialogFragment重写onCreateView方法
 					SelfDialogFragment selfDialogFragment = new SelfDialogFragment();
 					selfDialogFragment.show(getFragmentManager(), "Dialog");
 					break;
-				case 5:
+				case 10:
 					//继承DialogFragment重写onCreateDialog方法
 					LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
 					loginDialogFragment.show(getFragmentManager(), "Login");
 					break;
-				case 6:
+				case 11:
 					//奔跑的小人,疯狂加载(模仿美团加载页面)
 					showLoadingProgressDialog();
 			}
