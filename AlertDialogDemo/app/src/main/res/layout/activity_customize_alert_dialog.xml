@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tvA"
+        android:layout_width="wrap_content"
+        android:layout_height="52dp"
+        android:gravity="center_vertical"
+        android:text="发射子弹"
+        android:textColor="@color/black"
+        android:textSize="24sp"/>
+
+    <View style="@style/bg_line"/>
+
+    <TextView
+        android:id="@+id/tvB"
+        android:layout_width="wrap_content"
+        android:layout_height="59dp"
+
+        android:gravity="center_vertical"
+        android:text="发射核弹"
+        android:textColor="@color/black"
+        android:textSize="24sp"/>
+
+</LinearLayout>
