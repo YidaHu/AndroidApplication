@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.huyd.servicepro">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- 配置Service组件,同时配置一个action -->
+        <service android:name="com.huyd.service.MyService1">
+        </service>
+        <service android:name="com.huyd.service.MyService2"/>
+        <service android:name="com.huyd.service.MyService3"/>
+        <service android:name="com.huyd.service.AIDLService">
+            <intent-filter>
+                <action android:name="android.intent.action.AIDLService"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+
+        <activity android:name=".MainAIDLActivity">
+        </activity>
+        <activity android:name=".Main3Activity">
+        </activity>
+    </application>
+
+</manifest>
