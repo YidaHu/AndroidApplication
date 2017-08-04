@@ -652,7 +652,7 @@ loginDialogFragment.show(getFragmentManager(), "Login");
 
 ![meituan](AlertDialog/meituan.jpg)
 
-此处演示如上,由于截图原因呈现静态,实际为动态效果.代码稍多,具体见源码.
+此处演示如上,由于截图原因呈现静态,实际为动态效果.代码稍多,具体见**[源码](https://github.com/huyida/AndroidApplication)**.
 
 
 
