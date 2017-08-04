@@ -2,9 +2,27 @@
 
 在实际开发中,会经常用到各种各样的对话框,Android 也提供了丰富的dialog函数.再次记录下Android 对话框的几种实现方式,以及自定义Dialog.
 
-[TOC]
 
-#普通对话框
+
+- [普通Dialog](#普通Dialog)
+- [输入框的Dialog](#输入框的Dialog)
+- [自定义布局实现Dialog](#自定义布局实现Dialog)
+- [列表Dialog](#列表Dialog)
+- [单选Dialog](#单选Dialog)
+- [多选Dialog](#多选Dialog)
+- [加载Dialog](#加载Dialog)
+- [进度条Dialog](#进度条Dialog)
+- [重写Dialog实现Dialog](#重写Dialog实现Dialog)
+- [DialogFragment方式实现Dialog](#DialogFragment方式实现Dialog)
+  - [重写onCreateView方式](#重写onCreateView方式)
+  - [重写onCreateDialog方式](#重写onCreateDialog方式)
+- [模仿美团实现加载的Dialog](#模仿美团实现加载的Dialog)
+
+
+
+
+
+#普通Dialog
 
 ![systemdialog](AlertDialog/systemdialog.jpg)
 
@@ -24,7 +42,7 @@
 
 
 
-# 输入框的对话框
+# 输入框的Dialog
 
 ![inputdialog](AlertDialog/inputdialog.jpg)
 
@@ -51,7 +69,7 @@ private void showActivation() {
 
 
 
-# 自定义布局实现对话框
+# 自定义布局实现Dialog
 
 ![buttondialog](AlertDialog/buttondialog.jpg)
 
@@ -85,7 +103,7 @@ private void showTypeDialog() {
 }
 ~~~
 
-# 列表对话框
+# 列表Dialog
 
 ![list](AlertDialog/list.jpg)
 
@@ -118,7 +136,7 @@ private void showTypeDialog() {
 
 
 
-# 单选对话框
+# 单选Dialog
 
 ![SingleChoice](AlertDialog/SingleChoice.jpg)
 
@@ -161,7 +179,7 @@ private void showTypeDialog() {
 
 
 
-# 多选对话框
+# 多选Dialog
 
 ![MultiChoice](AlertDialog/MultiChoice.jpg)
 
@@ -216,7 +234,7 @@ static ArrayList<Integer> yourChoices = new ArrayList<>();
 
 
 
-# 加载对话框
+# 加载Dialog
 
 ![wait](AlertDialog/wait.jpg)
 
@@ -247,7 +265,7 @@ static ArrayList<Integer> yourChoices = new ArrayList<>();
 
 
 
-# 进度条对话框
+# 进度条Dialog
 
 ![progress](AlertDialog/progress.jpg)
 
@@ -297,7 +315,7 @@ static ArrayList<Integer> yourChoices = new ArrayList<>();
 
 
 
-# 重写Dialog实现对话框
+# 重写Dialog实现Dialog
 
 ![customDialog](AlertDialog/customDialog.jpg)
 
@@ -512,7 +530,7 @@ public class CustomDialog extends Dialog {
 	}
 ~~~
 
-# DialogFragment方式实现警示框
+# DialogFragment方式实现Dialog
 
 创建view可以通过两个途径，一是fragment中的onCreateView()，二是DialogFragment中的onCreateDialog()。
 前者适合对自定义的layout进行设置，具有更大的灵活性
@@ -630,7 +648,7 @@ LoginDialogFragment loginDialogFragment = new LoginDialogFragment();
 loginDialogFragment.show(getFragmentManager(), "Login");
 ~~~
 
-# 模仿美团实现加载的警示框
+# 模仿美团实现加载的Dialog
 
 ![meituan](AlertDialog/meituan.jpg)
 
