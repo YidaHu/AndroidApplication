@@ -4,8 +4,6 @@
 
 [TOC]
 
-
-
 #普通对话框
 
 ![systemdialog](AlertDialog/systemdialog.jpg)
