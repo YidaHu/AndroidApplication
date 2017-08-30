@@ -152,8 +152,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	 * @throws IOException
 	 */
 	public void setMacInfoToFile(String string) throws IOException {
-		Log.i("uriuriuriuri++", Environment.getExternalStorageDirectory().getPath() + "/.macinfo.txt");
-		File fileUri = new File(Environment.getExternalStorageDirectory().getPath() + "/.macinfo.txt");
+		Log.i("uriuriuriuri++", Environment.getExternalStorageDirectory().getPath() + "/Android/data/.macinfo.txt");
+		File fileUri = new File(Environment.getExternalStorageDirectory().getPath() + "/Android/data/.macinfo.txt");
 		if (!fileUri.exists()) {
 			fileUri.createNewFile();
 		}
@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 	 * @throws IOException
 	 */
 	public String getMacInfoFromFile() throws IOException {
-		File fileUri = new File(Environment.getExternalStorageDirectory().getPath() + "/.macinfo.txt");
+		File fileUri = new File(Environment.getExternalStorageDirectory().getPath() + "/Android/data/.macinfo.txt");
 		if (!fileUri.exists()) {
 			fileUri.createNewFile();
 		}
