@@ -1,4 +1,5 @@
-# AndroidApplication
+# Android Practical Demo
+
 # 前言
 
 包含了许多Android小程序.主要实现了Android开发的各个功能.以下为各个项目的简介.
@@ -6,6 +7,7 @@
 - AlertDialogDemo
 - ServicePro
 - SnackbarPro
+- DeviceUniqueCode
 
 
 
@@ -28,28 +30,6 @@
   - [重写onCreateView方式](#重写onCreateView方式)
   - [重写onCreateDialog方式](#重写onCreateDialog方式)
 - [模仿美团实现加载的Dialog](#模仿美团实现加载的Dialog)
-
-## 演示图片
-
-![buttondialog](AlertDialogDemo/AlertDialog/buttondialog.jpg)![DialogFragmentOncreatedialog](AlertDialogDemo/AlertDialog/DialogFragmentOncreatedialog.jpg)![customDialog](AlertDialogDemo/AlertDialog/customDialog.jpg)
-
-
-
-
-
-![DialogFragmentOncreateview](AlertDialogDemo/AlertDialog/DialogFragmentOncreateview.jpg)![list](AlertDialogDemo/AlertDialog/list.jpg)![inputdialog](AlertDialogDemo/AlertDialog/inputdialog.jpg)
-
-
-
-
-
-![MultiChoice](AlertDialogDemo/AlertDialog/MultiChoice.jpg)![progress](AlertDialogDemo/AlertDialog/progress.jpg)![meituan](AlertDialogDemo/AlertDialog/meituan.jpg)
-
-
-
-
-
-![SingleChoice](AlertDialogDemo/AlertDialog/SingleChoice.jpg)![wait](AlertDialogDemo/AlertDialog/wait.jpg)![systemdialog](AlertDialogDemo/AlertDialog/systemdialog.jpg)
 
 
 
@@ -78,3 +58,22 @@ Service是Android系统中的四大组件之一，主要有两个应用场景：
 # SnackbarPro
 
 Snackbar使用方式,以及自定义Snackbar和Snackbar的封装实现
+
+
+
+# DeviceUniqueCode
+
+本项目主要为Android N中获取MAC信息,存储到本地文件中.
+
+由于Android 7.0后官方对文件操作有如下变化:
+
+- 对于面向 Android N 的应用，Android 框架执行的 [StrictMode](https://developer.android.com/reference/android/os/StrictMode.html)，API 禁止向您的应用外公开 file://URI。
+  如果一项包含文件 URI 的 Intent 离开您的应用，应用失败，并出现 FileUriExposedException异常。
+- 若要在应用间共享文件，您应发送一项 content://URI，并授予 URI 临时访问权限。
+  进行此授权的最简单方式是使用 [FileProvider](https://developer.android.com/reference/android/support/v4/content/FileProvider.html)类。 如需有关权限和共享文件的更多信息，
+  请参阅[共享文件](https://developer.android.com/training/secure-file-sharing/index.html)。
+
+也就是说，对于应用间共享文件这块，[Android N](https://developer.android.com/preview/api-overview.html)中做了强制性要求.
+
+
+
